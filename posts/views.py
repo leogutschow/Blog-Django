@@ -17,6 +17,7 @@ class PostIndex(ListView):
     
     def get_queryset(self):
         query_set = super().get_queryset()
+        query_set = query_set.select_related('categoria')
         query_set = query_set.order_by('-id').filter(publicado=True)
         
         query_set = query_set.annotate(
